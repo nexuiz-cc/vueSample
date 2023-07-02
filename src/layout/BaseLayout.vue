@@ -97,19 +97,18 @@ const openKeys = ref(["sub1"]);
 
 .head {
   display: flex;
+  width: 1700px!important;
+  height: 878px;
   padding: 0 24px 24px;
-  background: rgb(116, 204, 233) !important;
-  width: 880px !important;
+
 }
 #app {
-  width: 550px;
-  background: lightblue !important;
+  background: rgb(59, 62, 63) !important;
   margin-left: 510px;
   margin-top: 100px;
   height: 340px;
 }
 .box {
-  background: lightpink;
   display: flex;
   margin-top: -120px;
 }
@@ -122,20 +121,19 @@ const openKeys = ref(["sub1"]);
   left: 0;
   top: 0;
   bottom: 0;
-}
-.ant-layout head {
-  width: 800px;
+  margin-top: -80px;
 }
 .content {
   background: #fff;
   padding: 14px;
-  min-height: 430px !important;
-  width: 882px;
+  min-height: 825px !important;
   margin-left: -25px;
+  width: 1700px;
+  
 }
 
-.ant-breadcrumb,
 .ant-layout {
   background-color: #c5dff8 !important;
+  margin-top: -80px;
 }
 </style>
