@@ -3,30 +3,17 @@
     <a-layout class="layout">
       <a-layout>
         <a-layout-sider class="side">
-          <a-menu
-            v-model:selectedKeys="selectedKeys2"
-            v-model:openKeys="openKeys"
-            mode="inline"
-            :style="{ height: '100%', borderRight: 0 }"
-          >
+          <a-menu v-model:selectedKeys="selectedKeys2" v-model:openKeys="openKeys"
+            :style="{ height: '100%', borderRight: 0 }" mode="inline">
             <a-sub-menu key="sub1">
-              <template #title>
-                <span>
-                  <user-outlined />
-                  subnav 1
-                </span>
-              </template>
-              <a-menu-item key="1">option1</a-menu-item>
+              <template #title> <span>  <user-outlined /> subnav 1 </span>  </template>
+              <a-menu-item key="1"><RouterLink to="./option1">option1</RouterLink></a-menu-item>
               <a-menu-item key="2">option2</a-menu-item>
               <a-menu-item key="3">option3</a-menu-item>
               <a-menu-item key="4">option4</a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="sub2">
-              <template #title>
-                <span>
-                  <laptop-outlined />
-                  subnav 2
-                </span>
+              <template #title>  <span>  <laptop-outlined /> subnav 2 </span>
               </template>
               <a-menu-item key="5">option5</a-menu-item>
               <a-menu-item key="6">option6</a-menu-item>
@@ -35,10 +22,7 @@
             </a-sub-menu>
             <a-sub-menu key="sub3">
               <template #title>
-                <span>
-                  <notification-outlined />
-                  subnav 3
-                </span>
+                <span><notification-outlined />subnav 3</span>
               </template>
               <a-menu-item key="9">option9</a-menu-item>
               <a-menu-item key="10">option10</a-menu-item>
@@ -64,7 +48,7 @@
 </template>
 
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView,RouterLink } from "vue-router";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -97,17 +81,19 @@ const openKeys = ref(["sub1"]);
 
 .head {
   display: flex;
-  width: 1700px!important;
+  width: 1700px !important;
   height: 878px;
   padding: 0 24px 24px;
 
 }
+
 #app {
   background: rgb(59, 62, 63) !important;
   margin-left: 510px;
   margin-top: 100px;
   height: 340px;
 }
+
 .box {
   display: flex;
   margin-top: -120px;
@@ -123,13 +109,14 @@ const openKeys = ref(["sub1"]);
   bottom: 0;
   margin-top: -80px;
 }
+
 .content {
   background: #fff;
   padding: 14px;
   min-height: 825px !important;
   margin-left: -25px;
   width: 1700px;
-  
+
 }
 
 .ant-layout {
