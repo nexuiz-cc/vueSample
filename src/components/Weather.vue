@@ -52,7 +52,6 @@ export default {
   mounted() {  
     document.title = 'Welcome'; 
     this.init();
-    
   }, 
   data() {
     return {
