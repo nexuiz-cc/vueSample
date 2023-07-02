@@ -1,10 +1,6 @@
 <template>
-    <div class="flexb">
-      <div
-        class="w-full lg:w-1/6 m-auto p-7 shadow-lg shadow-pink-400 border-4 border-t-purple-600 border-r-pink-600 border-b-pink-600 border-l-indigo-600 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-      >
-
-      <div class="clock" :style="clockStyle">
+    <!-- <div class="clock" :class="{'is-small':size==='small'}" :style="clockStyle"> -->
+    <div class="clock" :style="clockStyle">
         <div class="clock-circle"></div>
         <div class="clock-hour" :style="{transform:hourRotate}"></div>
         <div class="clock-minute" :style="{transform:minuteRotate}"></div>
@@ -15,24 +11,10 @@
             </span>
         </b>
     </div>
-        <p class="font-bold text-white pt-3 text-6xl" id="time">
-          {{ currentTime.toLocaleTimeString() }}
-        </p>
-        <p class="font-bold text-white text-xl mb-1 flex justify-end mr-3">
-          {{ currentTime.toLocaleDateString() }}
-        </p>
-      </div>
-    </div>
-  </template>
-  <script type="module">
-  import { useCurrentTime } from "../composables/useCurrentTime";
-  export default {
-    name: "CurrentTimeExample",
-    setup() {
-      const { currentTime } = useCurrentTime();
-      console.log(currentTime.value);
-      return { currentTime };
-    },
+</template>
+
+<script>
+export default {
     data() {
         return {
             timeList: [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
@@ -99,47 +81,27 @@
     destroyed() {
         if (this._timer) clearInterval(this._timer);
     }
-  };
-  </script>
+};
+</script>
 
-  <style>
-  .flexb{
-    display: flex;
-    margin-left: -1180px;
-    margin-top: 20px;
-
-  }
-  #time{
-    position: relative;
-    top: 80px;
-    left:80px;
-    font-size: 45px;
-  }
-  </style>
-
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
 $angle: 30deg;
 
 .clock {
     position: relative;
     display: inline-block;
-    width: 300px;
-    height: 300px;
-    border: 2px white solid;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border: 2px solid;
     border-radius: 100%;
     text-align: center;
-    font-size: 10px;
-    left: 50px;
-    top:50px;
-    color: #ffffff;
-    margin-top: -50px;
+    font-size: 14px;
 
     .hour {
         position: absolute;
         top: 0px;
         left: 50%;
-        font-family: 'Calling Code', Courier, monospace;
-        font-size: 8px;
         display: block;
         width: 20px;
         height: 50%;
@@ -151,6 +113,7 @@ $angle: 30deg;
         box-sizing: border-box;
         > span {
             display: block;
+
             > i {
                 display: block;
                 font-style: normal;
@@ -201,12 +164,12 @@ $angle: 30deg;
         top: 15%;
         left: 50%;
         display: block;
-        width: 2.5px;
+        width: 2px;
         height: 35%;
         margin-left: -1px;
         border-radius: 5px;
         transform-origin: bottom;
-        background-color: #000000;
+        background-color: #666666;
     }
 
     .clock-hour {
@@ -238,4 +201,3 @@ $angle: 30deg;
     }
 }
 </style>
-  
