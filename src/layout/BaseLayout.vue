@@ -6,8 +6,8 @@
           <a-menu v-model:selectedKeys="selectedKeys2" v-model:openKeys="openKeys"
             :style="{ height: '100%', borderRight: 0 }" mode="inline">
             <a-sub-menu key="sub1">
-              <template #title> <span>  <user-outlined /> subnav 1 </span>  </template>
-              <a-menu-item key="1"><RouterLink to="./option1">option1</RouterLink></a-menu-item>
+              <template #title> <span>  <user-outlined /> VSCode </span>  </template>
+              <a-menu-item key="1"><RouterLink to="./option1">コンソールログを二度と自分で書かない</RouterLink></a-menu-item>
               <a-menu-item key="2">option2</a-menu-item>
               <a-menu-item key="3">option3</a-menu-item>
               <a-menu-item key="4">option4</a-menu-item>
@@ -105,22 +105,37 @@ const openKeys = ref(["sub1"]);
   height: 88vh;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 10;
   bottom: 0;
   margin-top: -80px;
+  flex: 0 0 350px!important;
+  max-width: 500px!important;
+  min-width: 200px!important;
+  width: 400px!important;
 }
 
 .content {
   background: #fff;
-  padding: 14px;
+  padding: 15px;
   min-height: 825px !important;
   margin-left: -25px;
+  position: relative;
   width: 1700px;
 
 }
 
+.ant-layout-sider-children{
+
+}
+.ant-menu-title-content{
+  padding-top: 2px;
+}
 .ant-layout {
-  background-color: #c5dff8 !important;
+  background-color: #fff !important;
   margin-top: -80px;
+}
+.head {
+    position: relative;
+    top: 20px;
 }
 </style>
