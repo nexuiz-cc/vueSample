@@ -1,19 +1,36 @@
 <template>
-  <a-layout class="box">
-    <a-layout class="layout">
-      <a-layout>
-        <a-layout-sider class="side">
-          <a-menu v-model:selectedKeys="selectedKeys2" v-model:openKeys="openKeys"
-            :style="{ height: '100%', borderRight: 0 }" mode="inline">
+  <a-layout>
+    <a-layout-content style="padding: 0 50px">
+      <a-breadcrumb style="margin: 16px 30">
+        <a-breadcrumb-item id="subnav">{{ subnav }}</a-breadcrumb-item>
+        <a-breadcrumb-item id="option">{{ option }}</a-breadcrumb-item>
+      </a-breadcrumb>
+      <a-layout style="padding: 24px 0; background: #fff">
+        <a-layout-sider class="sider" width="330" style="background: #fff">
+          <a-menu
+            v-model:selectedKeys="selectedKeys2"
+            v-model:openKeys="openKeys"
+            mode="inline"
+            style="height: 100%"
+          >
             <a-sub-menu key="sub1">
-              <template #title> <span>  <user-outlined /> VSCode </span>  </template>
-              <a-menu-item key="1"><RouterLink to="./blog1">コンソールログを二度と自分で書かない</RouterLink></a-menu-item>
-              <a-menu-item key="2"><RouterLink to="./blog2">MDN プレイグラウンドの紹介</RouterLink></a-menu-item>
+              <template #title>
+                <span>
+                  <user-outlined />
+                  VSCode
+                </span>
+              </template>
+              <a-menu-item key="1"><button @click="changeBreadcrumb(1)"><RouterLink to='./blog1' >コンソールログを二度と自分で書かない</RouterLink></button></a-menu-item>
+              <a-menu-item key="2"><button @click="changeBreadcrumb(2)"><RouterLink to='./blog2' >プレイグラウンドの紹介</RouterLink></button></a-menu-item>
               <a-menu-item key="3">option3</a-menu-item>
               <a-menu-item key="4">option4</a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="sub2">
-              <template #title>  <span>  <laptop-outlined /> subnav 2 </span>
+              <template #title>
+                <span>
+                  <laptop-outlined />
+                  subnav 2
+                </span>
               </template>
               <a-menu-item key="5">option5</a-menu-item>
               <a-menu-item key="6">option6</a-menu-item>
@@ -22,7 +39,10 @@
             </a-sub-menu>
             <a-sub-menu key="sub3">
               <template #title>
-                <span><notification-outlined />subnav 3</span>
+                <span>
+                  <notification-outlined />
+                  subnav 3
+                </span>
               </template>
               <a-menu-item key="9">option9</a-menu-item>
               <a-menu-item key="10">option10</a-menu-item>
@@ -31,42 +51,53 @@
             </a-sub-menu>
           </a-menu>
         </a-layout-sider>
-        <a-layout class="head">
-          <a-breadcrumb style="margin: 16px 0">
-            <a-breadcrumb-item>Home</a-breadcrumb-item>
-            <a-breadcrumb-item>List</a-breadcrumb-item>
-            <a-breadcrumb-item>App</a-breadcrumb-item>
-          </a-breadcrumb>
-          <a-layout-content class="content">
-            <RouterView></RouterView>
-            <RouterView name="base"></RouterView>
-          </a-layout-content>
-        </a-layout>
+        <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
+          <RouterView></RouterView>
+          <RouterView name="base"></RouterView>
+        </a-layout-content>
       </a-layout>
-    </a-layout>
+    </a-layout-content>
   </a-layout>
 </template>
+<script>
+import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue';
+import { RouterLink } from "vue-router";
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
 
-<script setup>
-import { RouterView,RouterLink } from "vue-router";
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-} from "@ant-design/icons-vue";
-import { ref } from "vue";
-const selectedKeys2 = ref(["1"]);
-const openKeys = ref(["sub1"]);
+  components: {
+    UserOutlined,
+    LaptopOutlined,
+    NotificationOutlined,
+  },
+  setup() {
+    return {
+      selectedKeys1: ref(['2']),
+      selectedKeys2: ref(['1']),
+      openKeys: ref(['sub1']),
+      subnavList : ref(['VScode','VScode']),
+      optionList : ref(['コンソールログを二度と自分で書かない','プレイグラウンドの紹介']),
+      subnav:ref('home'),
+      option:ref('page')
+    };
+  },
+  methods:{
+    changeBreadcrumb(n){
+      this.subnav = this.subnavList[n-1];
+      this.option = this.optionList[n-1];
+    }
+  }
+});
 </script>
 <style>
-#components-layout-demo-top-side-2 .logo {
+#components-layout-demo-top-side .logo {
   float: left;
   width: 120px;
   height: 31px;
   margin: 16px 24px 16px 0;
 }
 
-.ant-row-rtl #components-layout-demo-top-side-2 .logo {
+.ant-row-rtl #components-layout-demo-top-side .logo {
   float: right;
   margin: 16px 0 16px 24px;
 }
@@ -75,67 +106,36 @@ const openKeys = ref(["sub1"]);
   background: #fff;
 }
 
-.layout {
-  margin-left: -530px;
-}
-
-.head {
-  display: flex;
-  width: 1700px !important;
-  height: 878px;
-  padding: 0 24px 24px;
-
-}
-
-#app {
-  background: rgb(59, 62, 63) !important;
-  margin-left: 510px;
-  margin-top: 100px;
-  height: 340px;
-}
-
-.box {
-  display: flex;
-  margin-top: -120px;
-}
-
-.side {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 88vh;
-  position: fixed;
-  left: 0;
-  top: 10;
-  bottom: 0;
-  margin-top: -80px;
-  flex: 0 0 350px!important;
-  max-width: 500px!important;
-  min-width: 200px!important;
-  width: 400px!important;
-}
-
-.content {
-  background: #fff;
-  padding: 15px;
-  min-height: 825px !important;
-  margin-left: -25px;
-  position: relative;
+.ant-layout{
   width: 1700px;
-
+  margin-left: -180px;
+  height: 800px;
+  background-color: #fff!important;
 }
-
-.ant-layout-sider-children{
-
+.ant-layout-content{
+  background-color: white;
+  max-width: 1700px;
+  max-height: 760px;
+  margin-left: 30px;
+  margin-top: -30px;
 }
-.ant-menu-title-content{
-  padding-top: 2px;
+.sider{
+  margin-top: -72px;
 }
-.ant-layout {
-  background-color: #fff !important;
-  margin-top: -80px;
+.ant-layout-footer{
+  background-color:white!important;
 }
-.head {
-    position: relative;
-    top: 20px;
+#subnav{
+  margin-left: 180px!important;
+  font-size: 16px!important;
+  font-weight: 600;
+  color: cornflowerblue!important;
+}
+#option{
+  font-size: 16px!important;font-weight: 600;
+  color: rgb(216, 130, 17)!important;
+}
+#option1{
+  width: 200px!important;
 }
 </style>

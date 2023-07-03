@@ -1,8 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter,createWebHashHistory } from 'vue-router'
 import Welcome from '../components/Welcome.vue';
+import Blog1 from '../components/Blog1.vue';
+import Blog2 from '../components/Blog2.vue';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -10,14 +12,12 @@ const router = createRouter({
     },
     {
       path: '/blog1',
-      name: 'base',
-      component: () => import('../components/Blog1.vue')
+      component: Blog1
     },
     {
       path: '/blog2',
-      name: 'base',
-      component: () => import('../components/Blog2.vue')
-    }
+      component: Blog2
+    },
   ]
 })
 
