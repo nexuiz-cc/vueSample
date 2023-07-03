@@ -11,7 +11,7 @@
 </code><button type="button" id='copy' aria-label="Copy code to clipboard" @click='copyToClipboard()'>Copy</button></pre>
 <p>おわかりのように、<code class="language-plaintext highlighter-rouge">console.log</code>文が挿入されるファイル名と行番号も追加される。ファイル名と行番号を手動で追加する必要がないので、これはかなり便利だ。</p>
 <p>これがその動作だ。</p>
-<div style="width: 1000px; height: 650px; top: 0px; left: 0px; background-image: url(&quot;./assets/gif/turbo-console.log.gif&quot;);"></div>
+<div style="width: 1000px; height: 650px; top: 0px; left: 0px; background-image: url(&quot;//www.amitmerchant.com/images/turbo-console.log.gif&quot;);"></div>
 <br>
 <p>これはデフォルトの動作だが、いくつかの設定を変更することでカスタマイズできる。例えば、ログメッセージのフォーマット、ログメッセージのプレフィックス、挿入したいログ文のタイプ</p>
 <p>（console.log、console.error、console.warnなど）をカスタマイズできます。</p>
