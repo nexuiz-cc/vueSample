@@ -7,8 +7,8 @@
             :style="{ height: '100%', borderRight: 0 }" mode="inline">
             <a-sub-menu key="sub1">
               <template #title> <span>  <user-outlined /> VSCode </span>  </template>
-              <a-menu-item key="1"><RouterLink to="./option1">コンソールログを二度と自分で書かない</RouterLink></a-menu-item>
-              <a-menu-item key="2">option2</a-menu-item>
+              <a-menu-item key="1"><RouterLink to="./blog1">コンソールログを二度と自分で書かない</RouterLink></a-menu-item>
+              <a-menu-item key="2"><RouterLink to="./blog2">MDN プレイグラウンドの紹介</RouterLink></a-menu-item>
               <a-menu-item key="3">option3</a-menu-item>
               <a-menu-item key="4">option4</a-menu-item>
             </a-sub-menu>
